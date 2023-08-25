@@ -1,4 +1,5 @@
 
+//template page login
 const loadTemplateLogin=()=>{
     const templateLogin=`
         <h1>Login</h1>
@@ -18,6 +19,7 @@ const loadTemplateLogin=()=>{
     body.innerHTML=templateLogin
 }
 
+//template page register
 const loadTemplateRegister=()=>{
     const templateLogin=`
     <h1>Registrar</h1>
@@ -41,8 +43,10 @@ const addListenerRegister=async()=>{
     const formRegister=document.getElementById("form-register")
     formRegister.onsubmit=async (e) =>{
         e.preventDefault()
+        //get a data of form
         const formData=new FormData(formRegister)
         const data=Object.fromEntries(formData.entries())
+        //call a endpoint 
         const response = await axios.post('/register',data)
         console.log(response.data)
     }

@@ -3,6 +3,7 @@ import UserService from "../services/user.service.js"
 import bcrypt from 'bcrypt'
 import Jwt from "jsonwebtoken"
 
+//create a jwt
 const signToken=_id=> Jwt.sign({_id},"mi-secreto")
 
 const UserController={
@@ -13,8 +14,10 @@ const UserController={
             if(isUser){
                 return res.status(200).send({message:"Email en uso"})
             }
+            //create salt and encrypted password
             const salt= await bcrypt.genSalt()
             const hashed=await bcrypt.hash(body.password,salt)
+            //call a service register
             const user=await UserService.register(body.email,hashed,salt)
             const signed= signToken(user._id)
             return res.status(200).send(signed)
