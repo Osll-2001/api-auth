@@ -14,12 +14,17 @@ mongoose.connect('mongodb+srv://osll:osll2001@cluster0.79prd.mongodb.net/api_aut
 
 app.use(Express.json())
 
+//search and find the static folder to the client
+app.use(Express.static('static'))
+
 routerApi(app)
 
-app.listen(port,()=>{
-    console.log("RUNNING IN PORT",port)
-})
 
 app.get('/',(req,res)=>{
     res.sendFile(`${__dirname}/index.html`);
+})
+
+
+app.listen(port,()=>{
+    console.log("RUNNING IN PORT",port)
 })
