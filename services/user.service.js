@@ -1,10 +1,19 @@
 import User from "../models/user.model.js"
 
 const UserService={
-    getAll: async ()=>{
+    getByEmail: async(email)=>{
         try{
-            const users=await User.find()
-            return users
+            const user=await User.findOne({email})
+            console.log(user)
+            return user
+        }catch(e){
+            throw Error("Error: ",e.message)
+        }
+    },
+    register:async(email,hashed,salt)=>{
+        try{
+            const newUser=await User.create({email,password:hashed,salt})
+            return newUser
         }catch(e){
             throw Error("Error: ",e.message)
         }

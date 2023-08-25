@@ -15,7 +15,7 @@ mongoose.connect('mongodb+srv://osll:osll2001@cluster0.79prd.mongodb.net/api_aut
 app.use(Express.json())
 
 //search and find the static folder to the client
-app.use(Express.static('static'))
+app.use(Express.static('app'))
 
 routerApi(app)
 

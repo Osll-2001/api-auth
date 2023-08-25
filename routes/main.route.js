@@ -1,7 +1,7 @@
 import UserRouter from "./user.route.js"
 
 const routerApi=(app)=>{
-    app.use('/users',UserRouter)    
+    app.use('/',UserRouter)    
 }
 
 export default routerApi
